@@ -6,8 +6,7 @@ import lxml.html
 #
 # # Read in a page
 
-url = "http://www.euskomedia.org/aunamendi/5601"
-html = scraperwiki.scrape(url)
+html = scraperwiki.scrape("http://www.euskomedia.org/aunamendi/5601")
 #
 # # Find something on the page using css selectors
 root = lxml.html.fromstring(html)
@@ -15,7 +14,7 @@ izenburua = root.cssselect("h1")
 
 
 # # Write out to the sqlite database using scraperwiki library
-scraperwiki.sqlite.save(unique_keys=['url'], data={url: izenburua})
+scraperwiki.sqlite.save(unique_keys=['izenburua'], data={izenburua})
 #
 # # An arbitrary query against the database
 # scraperwiki.sql.select("* from data where 'name'='peter'")
